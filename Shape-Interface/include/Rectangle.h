@@ -1,16 +1,19 @@
-#include "Circle.h"
-#include <cmath>
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
 
-Circle::Circle(double radius) : radius(radius) {}
+#include <string>
+#include "Shape.h"
 
-double Circle::square() const {
-    return 3.14159 * radius * radius;
-}
+class Rectangle : public Shape {
+public:
+    Rectangle(double length, double width);
+    double square() const override;
+    BoundingBoxDimensions dimensions() const override;
+    std::string type() const override;
 
-BoundingBoxDimensions Circle::dimensions() const {
-    return {2.0 * radius, 2.0 * radius};
-}
+private:
+    double length;
+    double width;
+};
 
-std::string Circle::type() const {
-    return "Circle";
-}
+#endif // RECTANGLE_H
